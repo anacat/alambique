@@ -12,6 +12,10 @@ public class BarrelManager : MonoBehaviour
     public Vector3 zeroScale;
     public Vector3 maxScale;
 
+    public Animator gageAnimator;
+
+    public int beers;
+
     private void Start()
     {
         barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, 0);
@@ -26,6 +30,27 @@ public class BarrelManager : MonoBehaviour
 
         barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, scaleModifier);
 
-        Debug.Log(currentGotas);
+        if(currentGotas >= 10)
+        {
+            gageAnimator.SetTrigger("Fill3");
+
+            currentGotas -= 10;
+
+            ScoreBeer();
+        }
+        else if(currentGotas >= 6)
+        {
+            gageAnimator.SetTrigger("Fill2");
+        }
+        else if(currentGotas >= 3)
+        {
+            gageAnimator.SetTrigger("Fill1");
+        }
+
+    }
+
+    void ScoreBeer()
+    {
+        beers++;
     }
 }
