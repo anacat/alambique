@@ -179,6 +179,7 @@ MonoBehaviour:
   growthDuration: 1
   startScale: {x: 0, y: 0, z: 0}
   endScale: {x: 2, y: 2, z: 2}
+  type: 0
 --- !u!54 &524421884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -643,3 +644,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hands: {fileID: 0}
+  maxGotas: 0

@@ -7,12 +7,12 @@ public class PickUp : MonoBehaviour
 {
     public UnityEvent grabbed;
     public UnityEvent used;
-
-    public bool destroyedOnLand;
+    public UnityEvent destroyed;
 
     public float growthDuration = 1f;
     public Vector3 startScale = Vector3.one;
     public Vector3 endScale = Vector3.one * 2f;
+    public float lifeTime;
 
     Rigidbody rb;
 
@@ -46,12 +46,17 @@ public class PickUp : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Floor")
+        if(collision.gameObject.tag == "Floor" && type == Type.Gota)
         {
             //colocar aqui animação
 
             DestroyThiShit();
         }
+        else if(type != Type.Gota)
+        {
+            StartCoroutine(StartDying());
+        }
+
     }
 
     private IEnumerator LerpScale()
@@ -71,6 +76,19 @@ public class PickUp : MonoBehaviour
         Fall();
     }
 
+    private IEnumerator StartDying()
+    {
+        float currentLife = 0;
+
+        while (currentLife < lifeTime)
+        {
+            currentLife += Time.deltaTime;
+            yield return null;
+        }
+
+        DestroyThiShit();
+    }
+
     void Fall()
     {
         rb.isKinematic = false;
@@ -78,6 +96,8 @@ public class PickUp : MonoBehaviour
 
     public void DestroyThiShit()
     {
+        destroyed.Invoke();
+
         Destroy(gameObject);
     }
 }
