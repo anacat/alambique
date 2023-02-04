@@ -53,6 +53,15 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shove"",
+                    ""type"": ""Button"",
+                    ""id"": ""96a3ee82-2af2-4d90-9930-7a6f89a4b4eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,28 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a95307a-a67c-41f7-86bd-23230b72aed7"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3430bf24-b8bc-45db-bb8d-9b50b306995d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +207,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
         m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
         m_Player1_Interact = m_Player1.FindAction("Interact", throwIfNotFound: true);
         m_Player1_Dash = m_Player1.FindAction("Dash", throwIfNotFound: true);
+        m_Player1_Shove = m_Player1.FindAction("Shove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,6 +270,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_Move;
     private readonly InputAction m_Player1_Interact;
     private readonly InputAction m_Player1_Dash;
+    private readonly InputAction m_Player1_Shove;
     public struct Player1Actions
     {
         private @MultiplayerInputs m_Wrapper;
@@ -245,6 +278,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player1_Move;
         public InputAction @Interact => m_Wrapper.m_Player1_Interact;
         public InputAction @Dash => m_Wrapper.m_Player1_Dash;
+        public InputAction @Shove => m_Wrapper.m_Player1_Shove;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +297,9 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
+                @Shove.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnShove;
+                @Shove.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnShove;
+                @Shove.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnShove;
             }
             m_Wrapper.m_Player1ActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +313,9 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Shove.started += instance.OnShove;
+                @Shove.performed += instance.OnShove;
+                @Shove.canceled += instance.OnShove;
             }
         }
     }
@@ -285,5 +325,6 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnShove(InputAction.CallbackContext context);
     }
 }
