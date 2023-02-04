@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(!CanMove)
+        {
+            return;
+        }
+
         Vector3 movement = new Vector3(_movementVector.x, 0, _movementVector.y);
 
         if (movement.magnitude > 0.1f)
@@ -93,4 +98,6 @@ public class PlayerController : MonoBehaviour
         var shoveDir = (otherPosition - transform.position).normalized;
         rb.velocity += shoveDir * currentShoveStrength;
     }
+
+    public bool CanMove { get; set; }
 }
