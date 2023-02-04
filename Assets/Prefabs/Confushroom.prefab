@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7347132074205645827}
   - component: {fileID: 7347132074205645828}
   - component: {fileID: 1648442194}
-  - component: {fileID: -6034046967235330620}
+  - component: {fileID: 6687238394646154880}
   m_Layer: 0
-  m_Name: RoottenBeer
+  m_Name: Confushroom
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   used:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6034046967235330620}
-        m_TargetAssemblyTypeName: RoottenBeer, Assembly-CSharp
+      - m_Target: {fileID: 6687238394646154880}
+        m_TargetAssemblyTypeName: Mushroom, Assembly-CSharp
         m_MethodName: ThrowAtPlayer
         m_Mode: 1
         m_Arguments:
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6034046967235330620
+--- !u!114 &6687238394646154880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7347132074205645825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb517ad3843dd645a7be16237b3ad47, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2947af505bf4849b3fe005b1233e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _lockOnAngle: 60

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PickUp))]
-public class RoottenBeer : MonoBehaviour
+public class Confushroom : MonoBehaviour
 {
     private PickUp _pickUp;
     [SerializeField]
@@ -23,7 +23,7 @@ public class RoottenBeer : MonoBehaviour
     {
         var ownerLookDirection = _pickUp.pickUpController.transform.forward;
         var otherPlayerTransform = transform;
-        if (MultiplayerController.instance.Player1().transform == _pickUp.pickUpController.transform)
+        if(MultiplayerController.instance.Player1().transform == _pickUp.pickUpController.transform)
         {
             otherPlayerTransform = MultiplayerController.instance.Player2().transform;
         }
@@ -86,7 +86,7 @@ public class RoottenBeer : MonoBehaviour
         var effectManager = _targetTransform.GetComponent<EffectManager>();
         if(effectManager != null)
         {
-            effectManager.ApplySlow();
+            effectManager.ApplyConfusion();
         }
         Destroy(gameObject);
     }

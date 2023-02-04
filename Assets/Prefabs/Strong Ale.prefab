@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7347132074205645827}
   - component: {fileID: 7347132074205645828}
   - component: {fileID: 1648442194}
-  - component: {fileID: -6034046967235330620}
+  - component: {fileID: -3516599743355279685}
   m_Layer: 0
-  m_Name: RoottenBeer
+  m_Name: Strong Ale
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1a33446e0588144a1b7350ae10b372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 1
   growthDuration: 1
   startScale: {x: 0, y: 0, z: 0}
   endScale: {x: 2, y: 2, z: 2}
@@ -62,9 +62,9 @@ MonoBehaviour:
   used:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6034046967235330620}
-        m_TargetAssemblyTypeName: RoottenBeer, Assembly-CSharp
-        m_MethodName: ThrowAtPlayer
+      - m_Target: {fileID: -3516599743355279685}
+        m_TargetAssemblyTypeName: StrongAle, Assembly-CSharp
+        m_MethodName: Consume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6034046967235330620
+--- !u!114 &-3516599743355279685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,12 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7347132074205645825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb517ad3843dd645a7be16237b3ad47, type: 3}
+  m_Script: {fileID: 11500000, guid: ccf6d19b820c7b446ae4885efcbc814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lockOnAngle: 60
-  _lockOnDistance: 5
-  _throwSpeed: 50
 --- !u!1 &7347132074606448907
 GameObject:
   m_ObjectHideFlags: 0
