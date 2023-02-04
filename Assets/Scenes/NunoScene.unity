@@ -328,6 +328,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &447433584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447433579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d95c19ecb3b966428aa0ea33dd374c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  _slowAmount: 0.5
+  _slowDuration: 1
+  _speedUpAmount: 0.8
+  _speedUpDuration: 1
+  _strengthUpAmount: 0.5
+  _strengthUpDuration: 1
+  _confusionDuration: 2
+  OnStartSlow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndSlow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartSpeedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndSpeedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartStrengthUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndStrengthUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartConfusion:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndConfusion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &496481379
 GameObject:
   m_ObjectHideFlags: 0

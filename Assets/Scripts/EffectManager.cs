@@ -27,16 +27,39 @@ public class EffectManager : MonoBehaviour
     private bool _speeding;
     #endregion
 
+    #region Strength effect variables
+    [SerializeField]
+    private float _strengthUpAmount;
+    [SerializeField]
+    private float _strengthUpDuration;
+    private float _remainingStrengthUpTime;
+    private Coroutine _elapsedStrengthUpCoroutine;
+    private bool _isStrong;
+    #endregion
+
+    #region Confusion effect variables
+    [SerializeField]
+    private float _confusionDuration;
+    private float _remainingConfusionTime;
+    private Coroutine _elapsedConfusionCoroutine;
+    private bool _isConfused;
+    #endregion
+
     #region Events
     public UnityEvent OnStartSlow;
     public UnityEvent OnEndSlow;
     public UnityEvent OnStartSpeedUp;
     public UnityEvent OnEndSpeedUp;
+    public UnityEvent OnStartStrengthUp;
+    public UnityEvent OnEndStrengthUp;
+    public UnityEvent OnStartConfusion;
+    public UnityEvent OnEndConfusion;
     #endregion
 
     private void Update()
     {
         var speedRate = 1.0f;
+        var strengthRate = 1.0f;
         if(_slowed)
         {
             speedRate -= _slowAmount;
@@ -45,8 +68,26 @@ public class EffectManager : MonoBehaviour
         {
             speedRate += _speedUpAmount;
         }
-
+        if(_isConfused)
+        {
+            speedRate *= -1.0f;
+        }
+        if(_isStrong)
+        {
+            strengthRate += strengthRate;
+        }
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Applying confusion");
+            ApplyConfusion();
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Applying strength up");
+            ApplyStrengthUp();
+        }
         owner.currentSpeed = owner.speed * speedRate;
+        owner.currentShoveStrength = owner.shoveStrength * strengthRate;
     }
 
     #region Slow methods
@@ -105,6 +146,68 @@ public class EffectManager : MonoBehaviour
                 _elapseSpeedUpCoroutine = null;
                 _speeding = false;
                 OnEndSpeedUp.Invoke();
+                yield break;
+            }
+        }
+    }
+    #endregion
+
+    #region Strength up methods
+    public void ApplyStrengthUp()
+    {
+        _isStrong = true;
+        _remainingStrengthUpTime += _strengthUpDuration;
+        if(_elapsedStrengthUpCoroutine == null)
+        {
+            OnStartStrengthUp.Invoke();
+            _elapsedStrengthUpCoroutine = StartCoroutine(ElapseStrengthUp());
+        }
+    }
+
+    private IEnumerator ElapseStrengthUp()
+    {
+        while(true)
+        {
+            yield return new WaitForEndOfFrame();
+            _remainingSpeedUpTime -= Time.deltaTime;
+
+            if(_remainingStrengthUpTime <= 0)
+            {
+                _remainingStrengthUpTime = 0.0f;
+                _elapsedStrengthUpCoroutine = null;
+                _isStrong = false;
+                OnEndStrengthUp.Invoke();
+                yield break;
+            }
+        }
+    }
+    #endregion
+
+    #region Confusion methods
+    public void ApplyConfusion()
+    {
+        _isConfused = true;
+        _remainingConfusionTime += _confusionDuration;
+        if(_elapsedConfusionCoroutine == null)
+        {
+            OnStartConfusion.Invoke();
+            _elapsedConfusionCoroutine = StartCoroutine(ElapseConfusion());
+        }
+    }
+
+    private IEnumerator ElapseConfusion()
+    {
+        while(true)
+        {
+            yield return new WaitForEndOfFrame();
+            _remainingConfusionTime -= Time.deltaTime;
+
+            if(_remainingConfusionTime <= 0)
+            {
+                _remainingConfusionTime = 0.0f;
+                _elapsedConfusionCoroutine = null;
+                _isConfused = false;
+                OnEndConfusion.Invoke();
                 yield break;
             }
         }
