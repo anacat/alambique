@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
         currentSpeed = speed;
         currentShoveStrength = shoveStrength;
         currentShoveCooldown = shoveCooldown;
+
+        CanMove = true;
     }    
 
     private void OnMove(InputValue movementValue)

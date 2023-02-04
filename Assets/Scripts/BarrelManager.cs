@@ -12,10 +12,19 @@ public class BarrelManager : MonoBehaviour
     public Vector3 zeroScale;
     public Vector3 maxScale;
 
+    private void Start()
+    {
+        barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, 0);
+    }
+
     // Start is called before the first frame update
     public void AddGotas(int toAdd)
     {
         currentGotas += toAdd;
+
+        float scaleModifier = (float)currentGotas / (float)capGotas;
+
+        barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, scaleModifier);
 
         Debug.Log(currentGotas);
     }
