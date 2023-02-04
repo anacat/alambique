@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     public UnityEvent grabbed;
     public UnityEvent used;
     public UnityEvent destroyed;
+    public UnityEvent hitFloor;
 
     public float growthDuration = 1f;
     public Vector3 startScale = Vector3.one;
@@ -46,17 +47,20 @@ public class PickUp : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Floor" && type == Type.Gota)
+        if(collision.gameObject.tag == "Floor")
         {
-            //colocar aqui animação
+            hitFloor.Invoke();
+            if (type == Type.Gota)
+            {
+                //colocar aqui animação
 
-            DestroyThiShit();
+                DestroyThiShit();
+            }
+            else if (type != Type.Gota)
+            {
+                StartCoroutine(StartDying());
+            }
         }
-        else if(type != Type.Gota)
-        {
-            StartCoroutine(StartDying());
-        }
-
     }
 
     private IEnumerator LerpScale()
