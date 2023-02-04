@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7347132074205645827}
   - component: {fileID: 7347132074205645828}
   - component: {fileID: 1648442194}
+  - component: {fileID: 1648442195}
   m_Layer: 0
   m_Name: DefaultPickUp
   m_TagString: PickUp
@@ -58,7 +59,19 @@ MonoBehaviour:
       m_Calls: []
   used:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1648442195}
+        m_TargetAssemblyTypeName: Gota, Assembly-CSharp
+        m_MethodName: DropInBarrel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   destroyed:
     m_PersistentCalls:
       m_Calls: []
@@ -94,6 +107,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1648442195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347132074205645825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b9fbca04842da4daefd7d00ff847df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUp: {fileID: 7347132074205645827}
 --- !u!1 &7347132074606448907
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,6 +103,8 @@ public class PickUpController : MonoBehaviour
 
     public void NullPickUp()
     {
+        pickUpInHand.gameObject.transform.SetParent(null);
+
         pickUpInHand = null;
 
         currentGotas = 0;

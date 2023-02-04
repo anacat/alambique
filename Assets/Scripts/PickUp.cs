@@ -39,6 +39,8 @@ public class PickUp : MonoBehaviour
 
     public void Grab()
     {
+        transform.tag = "Untagged";
+
         rb.isKinematic = true;
         grabbed.Invoke();
     }
