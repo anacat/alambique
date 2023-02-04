@@ -25,6 +25,13 @@ public class MultiplayerController : MonoBehaviour
     
     private PlayerController _p1;
     private PlayerController _p2;
+    
+    private PlayerInputManager _inputManager;
+
+    private void Awake()
+    {
+        _inputManager = GetComponent<PlayerInputManager>();
+    }
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -37,7 +44,7 @@ public class MultiplayerController : MonoBehaviour
 
             _p1 = playerInput.GetComponent<PlayerController>();
         }
-        else if(_nPlayers == 2)
+        else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
         {
             p2Text.text = "Player 2 ready!";
             playerInput.transform.position = p2Spawn.position;
@@ -47,6 +54,8 @@ public class MultiplayerController : MonoBehaviour
 
         if(_nPlayers == numberOfPlayers)
         {
+            _inputManager.DisableJoining();
+
             StartCoroutine(StartGameCountDown());
         }
     } 
