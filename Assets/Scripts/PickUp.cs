@@ -21,7 +21,11 @@ public class PickUp : MonoBehaviour
 
     [HideInInspector]
     public PickUpController pickUpController;
-    Rigidbody rb;
+    //Rigidbody rb;
+
+    public float floorHeight;
+    public float fallSpeed;
+    bool falling;
 
     public UnityEvent grabbed;
     public UnityEvent used;
@@ -31,17 +35,40 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        //rb = GetComponent<Rigidbody>();
+        //rb.isKinematic = true;
 
         StartCoroutine(LerpScale());
+    }
+
+    private void FixedUpdate()
+    {
+        if (falling)
+        {
+            transform.position = new Vector3(transform.position.x,
+                transform.position.y - fallSpeed * Time.deltaTime,
+                transform.position.z);
+
+            if (transform.position.y <= floorHeight)
+            {
+                falling = false;
+
+                transform.position = new Vector3(transform.position.x,
+                floorHeight,
+                transform.position.z);
+
+
+            }
+        }
     }
 
     public void Grab()
     {
         transform.tag = "Untagged";
 
-        rb.isKinematic = true;
+        falling = false;
+
+        //rb.isKinematic = true;
         grabbed.Invoke();
     }
 
@@ -82,7 +109,7 @@ public class PickUp : MonoBehaviour
 
         transform.localScale = endScale;
 
-        Fall();
+        falling = true;
     }
 
     private IEnumerator StartDying()
@@ -98,11 +125,6 @@ public class PickUp : MonoBehaviour
 
         if(transform.parent == null)
         DestroyThiShit();
-    }
-
-    void Fall()
-    {
-        rb.isKinematic = false;
     }
 
     public void DestroyThiShit()
