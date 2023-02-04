@@ -76,7 +76,7 @@ public class PickUpController : MonoBehaviour
                     currentGotas++;
 
                 }
-                else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || pickUpInHand.type == PickUp.Type.Debuff))
+                else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || tempPickup.type == PickUp.Type.Debuff))
                 {
                     pickUpInHand = tempPickup;
                     pickUpInHand.pickUpController = this;
