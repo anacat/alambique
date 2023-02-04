@@ -7,6 +7,11 @@ public class BarrelManager : MonoBehaviour
     public int capGotas;
     public int currentGotas;
 
+    public GameObject barrelBar;
+
+    public Vector3 zeroScale;
+    public Vector3 maxScale;
+
     // Start is called before the first frame update
     public void AddGotas(int toAdd)
     {
