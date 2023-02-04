@@ -36,7 +36,6 @@ public class Confushroom : MonoBehaviour
         var directionBetweenPlayers = otherPlayerTransform.position - _pickUp.pickUpController.transform.position;
         var angle = Vector3.Angle(ownerLookDirection, directionBetweenPlayers);
 
-        _pickUp.pickUpController.NullPickUp();
         _targetTransform = otherPlayerTransform;
 
         if (distance <= _lockOnDistance && angle <= _lockOnAngle)
@@ -47,6 +46,12 @@ public class Confushroom : MonoBehaviour
         {
             StartCoroutine(MoveInDirection(ownerLookDirection));
         }
+        var playerController = _pickUp.pickUpController.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.moleAnimator.SetTrigger("throw");
+        }
+        _pickUp.pickUpController.NullPickUp();
     }
 
     private IEnumerator MoveTowardsPlayer()

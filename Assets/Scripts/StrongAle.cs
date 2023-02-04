@@ -14,6 +14,11 @@ public class StrongAle : MonoBehaviour
 
     public void Consume()
     {
+        var playerController = _pickUp.pickUpController.GetComponent<PlayerController>();
+        if(playerController != null)
+        {
+            playerController.moleAnimator.SetTrigger("pickup");
+        }
         var effectManager = _pickUp.pickUpController.transform.GetComponent<EffectManager>();
         if(effectManager != null)
         {

@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementVector;
     private Rigidbody _rb;
 
+    public Animator moleAnimator;
+
     private void Awake() 
     {
         _rb = GetComponent<Rigidbody>();
@@ -68,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
         _rb.MovePosition(transform.position + movement * currentSpeed * Time.fixedDeltaTime);
         _rb.velocity = Vector3.zero;
+
+        moleAnimator.SetBool("isWalking", _movementVector.magnitude > 0);
     }
 
     private void OnTriggerEnter(Collider other)

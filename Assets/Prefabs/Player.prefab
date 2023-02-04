@@ -107,6 +107,7 @@ MonoBehaviour:
   _shoveHitbox: {fileID: 6116530683871855464}
   shoveDuration: 0.1
   hands: {fileID: 4414892192975628396}
+  moleAnimator: {fileID: 1807205220348188177}
 --- !u!114 &586308571487683614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +263,11 @@ PrefabInstance:
 --- !u!4 &964358968654716038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5180358052200462269, guid: 421fb7181539bb7458369909c6508fd3, type: 3}
+  m_PrefabInstance: {fileID: 5370053740111751995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1807205220348188177 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6021938317183663402, guid: 421fb7181539bb7458369909c6508fd3, type: 3}
   m_PrefabInstance: {fileID: 5370053740111751995}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4414892192975628396 stripped
