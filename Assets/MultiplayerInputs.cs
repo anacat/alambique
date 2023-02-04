@@ -46,7 +46,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Bash"",
                     ""type"": ""Button"",
                     ""id"": ""2e3226e2-2cad-4ffa-94ad-d0ef96a5815f"",
                     ""expectedControlType"": ""Button"",
@@ -151,7 +151,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Bash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -162,7 +162,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Bash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -175,7 +175,7 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
         m_Player1 = asset.FindActionMap("Player1", throwIfNotFound: true);
         m_Player1_Move = m_Player1.FindAction("Move", throwIfNotFound: true);
         m_Player1_Interact = m_Player1.FindAction("Interact", throwIfNotFound: true);
-        m_Player1_Dash = m_Player1.FindAction("Dash", throwIfNotFound: true);
+        m_Player1_Bash = m_Player1.FindAction("Bash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,14 +237,14 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
     private IPlayer1Actions m_Player1ActionsCallbackInterface;
     private readonly InputAction m_Player1_Move;
     private readonly InputAction m_Player1_Interact;
-    private readonly InputAction m_Player1_Dash;
+    private readonly InputAction m_Player1_Bash;
     public struct Player1Actions
     {
         private @MultiplayerInputs m_Wrapper;
         public Player1Actions(@MultiplayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player1_Move;
         public InputAction @Interact => m_Wrapper.m_Player1_Interact;
-        public InputAction @Dash => m_Wrapper.m_Player1_Dash;
+        public InputAction @Bash => m_Wrapper.m_Player1_Bash;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,9 +260,9 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnInteract;
-                @Dash.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnDash;
+                @Bash.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnBash;
+                @Bash.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnBash;
+                @Bash.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnBash;
             }
             m_Wrapper.m_Player1ActionsCallbackInterface = instance;
             if (instance != null)
@@ -273,9 +273,9 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
+                @Bash.started += instance.OnBash;
+                @Bash.performed += instance.OnBash;
+                @Bash.canceled += instance.OnBash;
             }
         }
     }
@@ -284,6 +284,6 @@ public partial class @MultiplayerInputs : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnBash(InputAction.CallbackContext context);
     }
 }
