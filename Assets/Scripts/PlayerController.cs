@@ -5,10 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float currentSpeed;
     public float rotationSpeed = 100.0f;
 
     public Transform hands;
     private Transform pickedUpObject;
+
+    private void Start()
+    {
+        currentSpeed = speed;
+    }
 
     void Update()
     {
@@ -21,7 +27,7 @@ public class PlayerController : MonoBehaviour
             transform.forward = Vector3.Slerp(transform.forward, movement, Time.deltaTime * rotationSpeed);
         }
 
-        transform.position += movement * speed * Time.deltaTime;
+        transform.position += movement * currentSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Fire1"))
         {
