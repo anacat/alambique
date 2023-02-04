@@ -5,18 +5,21 @@ using UnityEngine.Events;
 
 public class PickUp : MonoBehaviour
 {
-    public UnityEvent grabbed;
-    public UnityEvent used;
-    public UnityEvent destroyed;
-    public UnityEvent hitFloor;
+
 
     public float growthDuration = 1f;
     public Vector3 startScale = Vector3.one;
     public Vector3 endScale = Vector3.one * 2f;
     public float lifeTime;
 
+    [HideInInspector]
+    public PickUpController pickUpController;
     Rigidbody rb;
 
+    public UnityEvent grabbed;
+    public UnityEvent used;
+    public UnityEvent destroyed;
+    public UnityEvent hitFloor;
     public enum Type
     {
         Gota,

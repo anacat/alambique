@@ -42,6 +42,7 @@ public class PickUpController : MonoBehaviour
                 if (tempPickup.type == PickUp.Type.Gota && currentGotas < maxGotas && (pickUpInHand.type == PickUp.Type.Gota || pickUpInHand == null))
                 {
                     pickUpInHand = tempPickup;
+                    pickUpInHand.pickUpController = this;
 
                     pickUpInHand.Grab();
 
@@ -56,6 +57,7 @@ public class PickUpController : MonoBehaviour
                 else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || pickUpInHand.type == PickUp.Type.Debuff))
                 {
                     pickUpInHand = tempPickup;
+                    pickUpInHand.pickUpController = this;
 
                     pickUpInHand.Grab();
 
