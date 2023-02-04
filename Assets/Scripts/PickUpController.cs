@@ -8,7 +8,7 @@ public class PickUpController : MonoBehaviour
     PickUp pickUpInHand;
 
     public int maxGotas;
-    int currentGotas;
+    int currentGotas = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,18 +37,31 @@ public class PickUpController : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("PickUp"))
             {
-                pickUpInHand = collider.gameObject.GetComponent<PickUp>();
+                PickUp tempPickup = collider.gameObject.GetComponent<PickUp>();
 
-                pickUpInHand.Grab();
-
-                pickUpInHand.gameObject.transform.SetParent(hands);
-                pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
-                pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
-
-                if(pickUpInHand.type == PickUp.Type.Gota)
+                if (tempPickup.type == PickUp.Type.Gota && currentGotas < maxGotas && (pickUpInHand.type == PickUp.Type.Gota || pickUpInHand == null))
                 {
-                    pickUpInHand.gameObject.transform.localScale = Vector3.zero;
+                    pickUpInHand = tempPickup;
 
+                    pickUpInHand.Grab();
+
+                    pickUpInHand.gameObject.transform.SetParent(hands);
+                    pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
+                    pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
+
+                    pickUpInHand.gameObject.transform.localScale = Vector3.zero;
+                    currentGotas++;
+
+                }
+                else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || pickUpInHand.type == PickUp.Type.Debuff))
+                {
+                    pickUpInHand = tempPickup;
+
+                    pickUpInHand.Grab();
+
+                    pickUpInHand.gameObject.transform.SetParent(hands);
+                    pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
+                    pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
                 }
 
                 break;
@@ -58,6 +71,8 @@ public class PickUpController : MonoBehaviour
 
     void Use()
     {
+
+
         pickUpInHand.Use();
         pickUpInHand.gameObject.transform.SetParent(null);
         pickUpInHand = null;
