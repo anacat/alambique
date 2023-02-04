@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class PickUpController : MonoBehaviour
 {
+    public BarrelManager barrel;
     public Transform hands;
     PickUp pickUpInHand;
 
     public int maxGotas;
-    int currentGotas = 0;
+
+    public int currentGotas = 0;
+
+    public float actionCooldown = 0.5f;
+    bool action = true;
+
+    [HideInInspector]
+    public bool canDropGota = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +27,29 @@ public class PickUpController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pickUpInHand == null)
+        if (Input.GetButtonDown("Fire1") && action )
         {
-            TryPickUp();
+
+            Invoke("ActionCooldown", actionCooldown);
+            action = false;
+
+            if (pickUpInHand == null)
+            {
+                TryPickUp();
+                Debug.Log("fire1");
+            }
+            else
+            {
+                pickUpInHand.Use();
+                Debug.Log("fire2");
+            }
         }
-        else if (Input.GetButtonDown("Fire2") && pickUpInHand != null)
-        {
-            Use();
-            Debug.Log("fire2");
-        }
+
+    }
+
+    void ActionCooldown()
+    {
+        action = true;
     }
 
     void TryPickUp()
@@ -39,7 +61,7 @@ public class PickUpController : MonoBehaviour
             {
                 PickUp tempPickup = collider.gameObject.GetComponent<PickUp>();
 
-                if (tempPickup.type == PickUp.Type.Gota && currentGotas < maxGotas && (pickUpInHand.type == PickUp.Type.Gota || pickUpInHand == null))
+                if (tempPickup.type == PickUp.Type.Gota && currentGotas < maxGotas && (pickUpInHand == null || pickUpInHand.type == PickUp.Type.Gota))
                 {
                     pickUpInHand = tempPickup;
                     pickUpInHand.pickUpController = this;
@@ -50,7 +72,7 @@ public class PickUpController : MonoBehaviour
                     pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
                     pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
 
-                    pickUpInHand.gameObject.transform.localScale = Vector3.zero;
+                    //pickUpInHand.gameObject.transform.localScale = Vector3.zero;
                     currentGotas++;
 
                 }
@@ -71,13 +93,35 @@ public class PickUpController : MonoBehaviour
         }
     }
 
-    void Use()
+    //void Use()
+    //{
+    //    pickUpInHand.Use();
+
+    //    pickUpInHand.gameObject.transform.SetParent(null);
+    //    pickUpInHand = null;
+    //}
+
+    public void NullPickUp()
     {
-
-
-        pickUpInHand.Use();
-        pickUpInHand.gameObject.transform.SetParent(null);
         pickUpInHand = null;
+
+        currentGotas = 0;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Barrel"))
+        {
+            canDropGota = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Barrel"))
+        {
+            canDropGota = false;
+        }
+    }
 }
+

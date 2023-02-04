@@ -5,7 +5,14 @@ using UnityEngine.Events;
 
 public class PickUp : MonoBehaviour
 {
+    public enum Type
+    {
+        Gota,
+        Buff,
+        Debuff
+    }
 
+    public Type type;
 
     public float growthDuration = 1f;
     public Vector3 startScale = Vector3.one;
@@ -20,14 +27,6 @@ public class PickUp : MonoBehaviour
     public UnityEvent used;
     public UnityEvent destroyed;
     public UnityEvent hitFloor;
-    public enum Type
-    {
-        Gota,
-        Buff,
-        Debuff
-    }
-
-    public Type type;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +39,7 @@ public class PickUp : MonoBehaviour
 
     public void Grab()
     {
+        rb.isKinematic = true;
         grabbed.Invoke();
     }
 
@@ -57,7 +57,7 @@ public class PickUp : MonoBehaviour
             {
                 //colocar aqui animação
 
-                DestroyThiShit();
+               // DestroyThiShit();
             }
             else if (type != Type.Gota)
             {
@@ -93,6 +93,8 @@ public class PickUp : MonoBehaviour
             yield return null;
         }
 
+
+        if(transform.parent == null)
         DestroyThiShit();
     }
 
