@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
     private Transform pickedUpObject;
 
     private Vector2 _movementVector;
+    private Rigidbody _rb;
+
+    private void Awake() 
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     private void Start()
     {
@@ -42,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!CanMove)
         {
@@ -53,10 +59,14 @@ public class PlayerController : MonoBehaviour
 
         if (movement.magnitude > 0.1f)
         {
-            transform.forward = Vector3.Slerp(transform.forward, movement, Time.deltaTime * rotationSpeed);
+            Quaternion rotation = Quaternion.LookRotation(movement);
+            _rb.rotation = Quaternion.Slerp(_rb.rotation, rotation, Time.fixedDeltaTime * rotationSpeed);
+        
+            //transform.forward = Vector3.Slerp(transform.forward, movement, Time.fixedDeltaTime * rotationSpeed);
         }
 
-        transform.position += movement * currentSpeed * Time.deltaTime;
+        _rb.MovePosition(transform.position + movement * currentSpeed * Time.fixedDeltaTime);
+        _rb.velocity = Vector3.zero;
     }
 
     private void OnTriggerEnter(Collider other)

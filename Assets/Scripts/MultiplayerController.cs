@@ -9,6 +9,7 @@ public class MultiplayerController : MonoBehaviour
 {
     public static MultiplayerController instance;
     
+    public int numberOfPlayers;
     public GameObject multiplayerGroup;
     public TextMeshProUGUI countdownText;
 
@@ -29,7 +30,7 @@ public class MultiplayerController : MonoBehaviour
     {
         _nPlayers += 1;
 
-        if(_nPlayers== 1)
+        if(_nPlayers == 1)
         {
             p1Text.text = "Player 1 ready!";
             playerInput.transform.position = p1Spawn.position;
@@ -42,7 +43,10 @@ public class MultiplayerController : MonoBehaviour
             playerInput.transform.position = p2Spawn.position;
 
             _p1 = playerInput.GetComponent<PlayerController>();
+        }
 
+        if(_nPlayers == numberOfPlayers)
+        {
             StartCoroutine(StartGameCountDown());
         }
     } 
@@ -72,7 +76,11 @@ public class MultiplayerController : MonoBehaviour
         countdownText.gameObject.SetActive(false);
 
         _p1.CanMove = true;
-        _p2.CanMove = true;
+
+        if(_p2 != null) 
+        {
+            _p2.CanMove = true;
+        }
     }
 
     public PlayerController Player1() => _p1;
