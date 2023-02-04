@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool canMove;
     public float speed = 10.0f;
     public float currentSpeed;
     public float rotationSpeed = 10.0f;
@@ -109,5 +110,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity += shoveDir * currentShoveStrength;
     }
 
-    public bool CanMove { get; set; }
+    public bool CanMove 
+    { 
+        get => canMove;
+        set 
+        {
+            canMove = value;
+        } 
+    }
 }
