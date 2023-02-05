@@ -38906,13 +38906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-<<<<<<< Updated upstream
-  speed: 5
-  currentSpeed: 5
-=======
+
   speed: 3.5
   currentSpeed: 10
->>>>>>> Stashed changes
   rotationSpeed: 10
   shoveStrength: 3
   currentShoveStrength: 0
