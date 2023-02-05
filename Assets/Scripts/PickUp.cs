@@ -18,6 +18,7 @@ public class PickUp : MonoBehaviour
     public Vector3 startScale = Vector3.one;
     public Vector3 endScale = Vector3.one * 2f;
     public float lifeTime;
+    public GameObject spawnIndicator;
 
     [HideInInspector]
     public PickUpController pickUpController;

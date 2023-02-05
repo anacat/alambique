@@ -48,12 +48,14 @@ public class RootSpawner : MonoBehaviour
                 var currentPickup = currentSpawnPoint.SpawnablePickups[pickupToSpawn];
 
                 var pickupInstance = Instantiate(currentPickup, currentSpawnPoint.transform.position, currentPickup.transform.rotation);
+                var spawnIndicatorToSpawn = _spawnIndicatorPrefab;
 
                 var pickupComponent = pickupInstance.GetComponent<PickUp>();
                 if(pickupComponent != null)
                 {
                     pickupComponent.grabbed.AddListener(() => currentSpawnPoint.inUse = false);
                     pickupComponent.destroyed.AddListener(() => currentSpawnPoint.inUse = false);
+                    spawnIndicatorToSpawn = pickupComponent.spawnIndicator;
                 }
 
                 currentSpawnPoint.inUse = true;
@@ -62,7 +64,7 @@ public class RootSpawner : MonoBehaviour
                 RaycastHit hit;
                 if(Physics.Raycast(ray, out hit, 500, _floorLayer))
                 {
-                    var spawnIndicator = Instantiate(_spawnIndicatorPrefab, hit.point, _spawnIndicatorPrefab.transform.rotation);
+                    var spawnIndicator = Instantiate(spawnIndicatorToSpawn, hit.point, _spawnIndicatorPrefab.transform.rotation);
                     pickupComponent.hitFloor.AddListener(() => Destroy(spawnIndicator));
                 }
 
