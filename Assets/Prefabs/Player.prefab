@@ -29128,7 +29128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727667012}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38918,6 +38918,8 @@ MonoBehaviour:
   hands: {fileID: 4414892192975628396}
   uiController: {fileID: 0}
   moleAnimator: {fileID: 1807205220348188177}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  meshRenderer: {fileID: 862352361568275024}
 --- !u!114 &586308571487683614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39216,6 +39218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 421fb7181539bb7458369909c6508fd3, type: 3}
+--- !u!137 &862352361568275024 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4715818065883914603, guid: 421fb7181539bb7458369909c6508fd3, type: 3}
+  m_PrefabInstance: {fileID: 5370053740111751995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &964358968654716038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5180358052200462269, guid: 421fb7181539bb7458369909c6508fd3, type: 3}

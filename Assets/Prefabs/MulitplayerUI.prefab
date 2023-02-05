@@ -754,6 +754,13 @@ MonoBehaviour:
   p2Text: {fileID: 5060195146033563700}
   p1Spawn: {fileID: 0}
   p2Spawn: {fileID: 0}
+  p1Color: {r: 0, g: 0.5597491, b: 1, a: 1}
+  p2Color: {r: 1, g: 0.3305619, b: 0.3066038, a: 1}
+  _p1GageAnimator: {fileID: 0}
+  _p2GageAnimator: {fileID: 0}
+  _p1Barrel: {fileID: 0}
+  _p2Barrel: {fileID: 0}
+  _rootSpawner: {fileID: 0}
 --- !u!114 &4513174165476832547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +795,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7151897811349496504, guid: dd519f82c53c53d1fabceb4868e550c3, type: 3}
-  m_PlayerPrefab: {fileID: 0}
+  m_PlayerPrefab: {fileID: 8476796333982174499, guid: 201118c87461a174186510a6b4842947, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
