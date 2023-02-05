@@ -870,6 +870,7 @@ MonoBehaviour:
   Curtain: {fileID: 1872178022}
   TotalTime: 2
   FadeIn: 0
+  exit: 1
 --- !u!114 &713002532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1230,7 @@ MonoBehaviour:
   Curtain: {fileID: 1872178022}
   TotalTime: 3
   FadeIn: 1
+  exit: 0
 --- !u!1 &1053701275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1850,7 @@ MonoBehaviour:
   Curtain: {fileID: 1872178022}
   TotalTime: 2
   FadeIn: 0
+  exit: 0
 --- !u!114 &1165640228
 MonoBehaviour:
   m_ObjectHideFlags: 0

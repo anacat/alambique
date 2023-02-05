@@ -12,6 +12,7 @@ public class CurtainScript : MonoBehaviour
     public Image Curtain;
     public float TotalTime;
     public bool FadeIn;
+    public bool exit;
 
     // Start is called before the first frame update
     public void Start()
@@ -46,7 +47,10 @@ public class CurtainScript : MonoBehaviour
                 Curtain.raycastTarget = !FadeIn;
                 if(!FadeIn)
                 {
-                    Application.Quit();
+                    if(exit)
+                    {
+                        Application.Quit();
+                    }
                 }
                 yield break;
             }

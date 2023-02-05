@@ -70,7 +70,7 @@ public class MultiplayerController : MonoBehaviour
             _p1 = playerInput.GetComponent<PlayerController>();
             _p1.uiController = UIManager.instance.player1UI;
             _p1.SetColor(p1Color);
-            _p2.uiController.counterbeer = counter1;
+            _p1.uiController.counterbeer = counter1;
 
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
