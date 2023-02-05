@@ -58,7 +58,7 @@ public class PickUp : MonoBehaviour
                 transform.position = new Vector3(transform.position.x,
                 floorHeight,
                 transform.position.z);
-
+                hitFloor.Invoke();
 
             }
         }
@@ -126,12 +126,15 @@ public class PickUp : MonoBehaviour
 
 
         if(transform.parent == null)
-        DestroyThiShit();
+        DestroyThiShit(true);
     }
 
-    public void DestroyThiShit()
+    public void DestroyThiShit(bool invoke)
     {
-        destroyed.Invoke();
+        if(invoke)
+        {
+            destroyed.Invoke();
+        }
 
         Destroy(gameObject);
     }

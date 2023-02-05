@@ -71,7 +71,8 @@ public class Confushroom : MonoBehaviour
 
     private IEnumerator MoveInDirection(Vector3 direction)
     {
-        while(true)
+        Invoke(nameof(DestroyThisShit), 20.0f);
+        while (true)
         {
             yield return new WaitForEndOfFrame();
             transform.position += direction.normalized * Time.deltaTime * _throwSpeed;
@@ -93,5 +94,10 @@ public class Confushroom : MonoBehaviour
             effectManager.ApplyConfusion();
         }
         Destroy(gameObject);
+    }
+
+    private void DestroyThisShit()
+    {
+        _pickUp.DestroyThiShit(false);
     }
 }

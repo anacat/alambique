@@ -24,7 +24,7 @@ public class Gota : MonoBehaviour
             }
             pickUp.pickUpController.barrel.AddGotas(pickUp.pickUpController.currentGotas);
 
-            pickUp.DestroyThiShit();
+            pickUp.DestroyThiShit(false);
 
             pickUp.pickUpController.NullPickUp();
         }

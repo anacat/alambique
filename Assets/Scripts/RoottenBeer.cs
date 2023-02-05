@@ -72,6 +72,7 @@ public class RoottenBeer : MonoBehaviour
 
     private IEnumerator MoveInDirection(Vector3 direction)
     {
+        Invoke(nameof(DestroyThisShit), 20.0f);
         while(true)
         {
             yield return new WaitForEndOfFrame();
@@ -93,5 +94,10 @@ public class RoottenBeer : MonoBehaviour
             effectManager.ApplySlow();
         }
         Destroy(gameObject);
+    }
+
+    private void DestroyThisShit()
+    {
+        _pickUp.DestroyThiShit(false);
     }
 }
