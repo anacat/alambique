@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
     public Animator moleAnimator;
+    public Color color;
+    public Renderer meshRenderer;
+
+    private MaterialPropertyBlock _mpb;
 
     private void Awake() 
     {
@@ -39,6 +43,15 @@ public class PlayerController : MonoBehaviour
         currentShoveStrength = shoveStrength;
         currentShoveCooldown = shoveCooldown;
     }    
+
+    public void SetColor(Color c)
+    {
+        _mpb = new MaterialPropertyBlock();
+
+        color = c;
+        _mpb.SetColor("_MaskedColor", color);
+        meshRenderer.SetPropertyBlock(_mpb);
+    }
 
     private void OnMove(InputValue movementValue)
     {

@@ -14,13 +14,21 @@ public class UIController : MonoBehaviour
     public Image roottenBeerImage;
     public Image strongAleImage;
     public Image confushroomImage;
-    
+
+    public BeerCounter counterbeer;
+
     public enum ItemType
     {
         doubleTap,
         roottenBeer,
         strongAle,
         confushroom
+    }
+
+    private void Awake()
+    {
+        SetServedBeersCounter(0);
+        SetSapCounter(0);
     }
 
     public void SetItem(ItemType itemType)
@@ -38,17 +46,19 @@ public class UIController : MonoBehaviour
     public void SetSapCounter(int counter)
     {
         sapCounterText.transform.parent.gameObject.SetActive(true);
-        sapCounterText.text = counter.ToString();
+        sapCounterText.text = $"{counter}/3";
     }
 
     public void SetProgress(float progress)
     {
-        progressBarImage.fillAmount = progress / 10f;
+        progressBarImage.fillAmount = progress;
     }
 
     public void SetServedBeersCounter(int counter)
     {
-        servedBeersText.text = counter.ToString();
+        counterbeer.sliderValue = counter;
+
+        servedBeersText.text = $"{counter}/10";
     }
 
     public void HideSapCount()

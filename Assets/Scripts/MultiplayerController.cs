@@ -20,6 +20,9 @@ public class MultiplayerController : MonoBehaviour
     public Transform p1Spawn;
     public Transform p2Spawn;
 
+    public Color p1Color;
+    public Color p2Color;
+
     private int _nPlayers;
     private bool _gameStarted;
     
@@ -37,6 +40,12 @@ public class MultiplayerController : MonoBehaviour
     private Transform _p1Barrel;
     [SerializeField]
     private Transform _p2Barrel;
+
+    [SerializeField]
+    private BeerCounter counter1;
+    [SerializeField]
+    private BeerCounter counter2;
+
 
     [SerializeField]
     RootSpawner _rootSpawner;
@@ -60,6 +69,9 @@ public class MultiplayerController : MonoBehaviour
 
             _p1 = playerInput.GetComponent<PlayerController>();
             _p1.uiController = UIManager.instance.player1UI;
+            _p1.SetColor(p1Color);
+            _p2.uiController.counterbeer = counter1;
+
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
         }
@@ -70,6 +82,9 @@ public class MultiplayerController : MonoBehaviour
 
             _p2 = playerInput.GetComponent<PlayerController>();
             _p2.uiController = UIManager.instance.player2UI;
+            _p2.uiController.counterbeer = counter2;
+            _p2.SetColor(p2Color);
+
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
         }
