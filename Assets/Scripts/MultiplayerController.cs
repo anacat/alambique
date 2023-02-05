@@ -112,6 +112,9 @@ public class MultiplayerController : MonoBehaviour
         {
             _p2.CanMove = true;
         }
+
+        UIManager.instance.EnableUI();
+
         _rootSpawner.StartSpawner();
     }
 

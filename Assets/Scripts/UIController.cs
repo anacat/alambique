@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
         sapCounterText.text = counter.ToString();
     }
 
-    public void SetProgress(int progress)
+    public void SetProgress(float progress)
     {
         progressBarImage.fillAmount = progress / 10f;
     }
