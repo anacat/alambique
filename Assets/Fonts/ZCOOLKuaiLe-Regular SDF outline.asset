@@ -67,7 +67,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.1
+    - _OutlineWidth: 0.293
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
@@ -115,11 +115,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: ZCOOLKuaiLe-Regular SDF
+  m_Name: ZCOOLKuaiLe-Regular SDF outline
   m_EditorClassIdentifier: 
-  hashCode: -479905588
+  hashCode: -1033495956
   material: {fileID: -3877967000452631770}
-  materialHashCode: -2062136212
+  materialHashCode: -1746652084
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9e7ba84176ecfeb4abbb4a5be021a812
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9e7ba84176ecfeb4abbb4a5be021a812, type: 3}
