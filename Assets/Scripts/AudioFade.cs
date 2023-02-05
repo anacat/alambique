@@ -1,44 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class AudioFade : MonoBehaviour
 {
-
-    public bool OnStart;
+    public AudioSource TheSource;
+    private bool OnStart;
     public float MaxTime;
-    public float VolI, VolF;
+    private float VolI, VolF;
     private float time;
 
     // Start is called before the first frame update
     void Start()
     {
         time = 0f;
-        if(OnStart)
-            StartCoroutine(LerpSound(VolI, VolF));
+        OnStart = true;
+        StartCoroutine(LerpSound());
     }
 
-    void OnClick()
+    public void OnClick()
     {
-        StartCoroutine(LerpSound(VolI, VolF));
+        StartCoroutine(LerpSound());
     }
 
-
-    private IEnumerator LerpSound(float VolI, float VolF)
+    private IEnumerator LerpSound()
     {
         while (true)
         {
+
+            if (OnStart)
+            {
+                VolI = TheSource.volume;
+                VolF = 1f;
+            }
+            else
+            {
+                VolI = 1f;
+                VolF = 0f;
+            }   
+
             yield return new WaitForEndOfFrame();
 
             time += Time.deltaTime;
 
-            
+            TheSource.volume = VolI + (VolF-VolI) * Mathf.Pow(time/MaxTime,1);
 
             if (time > MaxTime)
             {
                 time = 0f;
+                OnStart = false;
                 yield break;
             }
 
