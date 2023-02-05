@@ -80,7 +80,7 @@ public class RootSpawner : MonoBehaviour
 
     private IEnumerator DelayedDestroy(GameObject obj)
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
         Destroy(obj);
     }
 
