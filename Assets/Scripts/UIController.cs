@@ -23,6 +23,12 @@ public class UIController : MonoBehaviour
         confushroom
     }
 
+    private void Awake()
+    {
+        SetServedBeersCounter(0);
+        SetSapCounter(0);
+    }
+
     public void SetItem(ItemType itemType)
     {
         doubleTapRootImage.transform.parent.gameObject.SetActive(true);
@@ -43,6 +49,7 @@ public class UIController : MonoBehaviour
 
     public void SetProgress(float progress)
     {
+        Debug.Log(progress / 10f);
         progressBarImage.fillAmount = progress / 10f;
     }
 

@@ -8,8 +8,10 @@ public class PickUp : MonoBehaviour
     public enum Type
     {
         Gota,
-        Buff,
-        Debuff
+        Slow,
+        Speed,
+        Strength,
+        Confuse
     }
 
     public Type type;

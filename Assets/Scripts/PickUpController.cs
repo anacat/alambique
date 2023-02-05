@@ -17,6 +17,8 @@ public class PickUpController : MonoBehaviour
     public float actionCooldown = 0.5f;
     bool action = true;
 
+    private PlayerController _player;
+
     [HideInInspector]
     public bool canDropGota = false;
 
@@ -78,10 +80,12 @@ public class PickUpController : MonoBehaviour
                     if (currentGotas > maxGotas)
                         currentGotas = maxGotas;
 
+                    _player.uiController.SetSapCounter(currentGotas);
+
                     //currentGotas++;
 
                 }
-                else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || tempPickup.type == PickUp.Type.Debuff))
+                else if (pickUpInHand == null && (tempPickup.type != PickUp.Type.Gota))
                 {
                     pickUpInHand = tempPickup;
                     pickUpInHand.pickUpController = this;
@@ -91,6 +95,23 @@ public class PickUpController : MonoBehaviour
                     pickUpInHand.gameObject.transform.SetParent(hands);
                     pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
                     pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
+
+                    switch(tempPickup.type)
+                    {
+                        case PickUp.Type.Confuse:
+                            _player.uiController.SetItem(UIController.ItemType.confushroom);
+                            break;
+                        case PickUp.Type.Slow:
+                            _player.uiController.SetItem(UIController.ItemType.roottenBeer);
+                            break;
+                        case PickUp.Type.Speed:
+                            _player.uiController.SetItem(UIController.ItemType.doubleTap);
+                            break;
+                        case PickUp.Type.Strength:
+                            _player.uiController.SetItem(UIController.ItemType.strongAle);
+                            break;
+                    }
+
                 }
 
                 break;

@@ -57,5 +57,7 @@ public class BarrelManager : MonoBehaviour
     void ScoreBeer()
     {
         beers++;
+
+        _playerController.uiController.SetServedBeersCounter(beers);
     }
 }
