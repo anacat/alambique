@@ -125,8 +125,18 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyShove(Rigidbody rb, Vector3 otherPosition)
     {
+        Debug.Log("Applying shove");
         var shoveDir = (otherPosition - transform.position).normalized;
         rb.velocity += shoveDir * currentShoveStrength;
+        var pc = rb.GetComponent<PlayerController>();
+        pc.canMove = false;
+        StartCoroutine(SetMoveAgain(pc));
+    }
+
+    private IEnumerator SetMoveAgain(PlayerController pc)
+    {
+        yield return new WaitForSeconds(0.5f);
+        pc.canMove = true;
     }
 
     public bool CanMove 

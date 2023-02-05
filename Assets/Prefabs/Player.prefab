@@ -38860,7 +38860,6 @@ GameObject:
   - component: {fileID: 4232684655558716030}
   - component: {fileID: 7857780595612026549}
   - component: {fileID: 1306226240034323704}
-  - component: {fileID: 4000956655139431562}
   m_Layer: 3
   m_Name: Quad
   m_TagString: Untagged
@@ -38933,20 +38932,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4000956655139431562
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7212148901359369827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8476796333982174499
 GameObject:
   m_ObjectHideFlags: 0
@@ -38965,7 +38950,7 @@ GameObject:
   - component: {fileID: 8476796335833400865}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39129,11 +39114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 8476796333982174557}
   _slowAmount: 0.5
-  _slowDuration: 1.5
+  _slowDuration: 3
   _speedUpAmount: 0.5
-  _speedUpDuration: 3
+  _speedUpDuration: 5
   _strengthUpAmount: 0.5
-  _strengthUpDuration: 10
+  _strengthUpDuration: 6
   _confusionDuration: 3
   OnStartSlow:
     m_PersistentCalls:
@@ -39183,9 +39168,9 @@ MonoBehaviour:
   OnEndSpeedUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1666103032}
+      - m_Target: {fileID: 1727667012}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Stop
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
