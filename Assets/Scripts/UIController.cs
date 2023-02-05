@@ -49,8 +49,7 @@ public class UIController : MonoBehaviour
 
     public void SetProgress(float progress)
     {
-        Debug.Log(progress / 10f);
-        progressBarImage.fillAmount = progress / 10f;
+        progressBarImage.fillAmount = progress;
     }
 
     public void SetServedBeersCounter(int counter)

@@ -57,7 +57,7 @@ public class BarrelManager : MonoBehaviour
     void ScoreBeer()
     {
         beers++;
-
+        _playerController.uiController.SetProgress(currentGotas / capGotas);
         _playerController.uiController.SetServedBeersCounter(beers);
     }
 }
