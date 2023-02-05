@@ -13,4 +13,10 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
     }
+
+    public void EnableUI()
+    {
+        player1UI.gameObject.SetActive(true);
+        player2UI.gameObject.SetActive(true);
+    }
 }

@@ -15,20 +15,25 @@ public class BarrelManager : MonoBehaviour
     public Animator gageAnimator;
 
     public int beers;
+    private PlayerController _playerController;
 
     private void Start()
     {
-        //barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, 0);
+        _playerController = GetComponent<PlayerController>();
+        _playerController.uiController.SetProgress(0);
     }
 
-    // Start is called before the first frame update
     public void AddGotas(int toAdd)
     {
+        if(!_playerController.CanMove)
+        {
+            return;
+        }
+
         currentGotas += toAdd;
 
         float scaleModifier = (float)currentGotas / (float)capGotas;
-
-        //barrelBar.transform.localScale = Vector3.Lerp(zeroScale, maxScale, scaleModifier);
+        _playerController.uiController.SetProgress(scaleModifier);
 
         if(currentGotas >= 10)
         {
