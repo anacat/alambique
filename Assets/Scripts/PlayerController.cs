@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float shoveDuration = 0.1f;
 
     public Transform hands;
+    public UIController uiController;
+    
     private Transform pickedUpObject;
 
     private Vector2 _movementVector;

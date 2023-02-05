@@ -30,6 +30,7 @@ public class MultiplayerController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         _inputManager = GetComponent<PlayerInputManager>();
     }
 
@@ -43,13 +44,15 @@ public class MultiplayerController : MonoBehaviour
             playerInput.transform.position = p1Spawn.position;
 
             _p1 = playerInput.GetComponent<PlayerController>();
+            _p1.uiController = UIManager.instance.player1UI;
         }
         else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
         {
             p2Text.text = "Player 2 ready!";
             playerInput.transform.position = p2Spawn.position;
 
-            _p1 = playerInput.GetComponent<PlayerController>();
+            _p2 = playerInput.GetComponent<PlayerController>();
+            _p2.uiController = UIManager.instance.player2UI;
         }
 
         if(_nPlayers == numberOfPlayers)
