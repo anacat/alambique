@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
 
     public void SetItem(ItemType itemType)
     {
+        doubleTapRootImage.transform.parent.gameObject.SetActive(true);
+
         int item = (int)itemType;
 
         doubleTapRootImage.gameObject.SetActive(item == 0);
@@ -35,6 +37,7 @@ public class UIController : MonoBehaviour
 
     public void SetSapCounter(int counter)
     {
+        sapCounterText.transform.parent.gameObject.SetActive(true);
         sapCounterText.text = counter.ToString();
     }
 
@@ -47,4 +50,12 @@ public class UIController : MonoBehaviour
     {
         servedBeersText.text = counter.ToString();
     }
+
+    public void HideSapCount()
+    {
+        sapCounterText.text = "0";
+        sapCounterText.transform.parent.gameObject.SetActive(false);
+    }
+
+
 }
