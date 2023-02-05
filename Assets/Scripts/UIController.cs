@@ -44,7 +44,7 @@ public class UIController : MonoBehaviour
     public void SetSapCounter(int counter)
     {
         sapCounterText.transform.parent.gameObject.SetActive(true);
-        sapCounterText.text = counter.ToString();
+        sapCounterText.text = "${counter}/3";
     }
 
     public void SetProgress(float progress)
@@ -55,7 +55,7 @@ public class UIController : MonoBehaviour
 
     public void SetServedBeersCounter(int counter)
     {
-        servedBeersText.text = counter.ToString();
+        servedBeersText.text = "${counter}/10";
     }
 
     public void HideSapCount()
