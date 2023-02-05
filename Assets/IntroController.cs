@@ -6,17 +6,23 @@ using UnityEngine.SceneManagement;
 public class IntroController : MonoBehaviour
 {
     public List<CanvasGroup> texts = new List<CanvasGroup>();
+    public AudioSource[] Vozes;
 
     private IEnumerator Start()
     {
         float time = 1f;
         float timer = 0f;
         float percentage = 0f;
+        float[] Waiting = { 1.8f, 1.5f, 0.8f, 1.1f };
 
-        for(int i = 0; i < texts.Count; i++)
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < texts.Count; i++)
         {
             timer = 0f;
             percentage = 0f;
+
+            Vozes[i].Play();
 
             while (percentage < 1f)
             {
@@ -25,10 +31,13 @@ public class IntroController : MonoBehaviour
 
                 texts[i].alpha = Mathf.Lerp(0f, 1f, percentage);
 
+                if(percentage >= 0.1f)
+                    
+
                 yield return null;
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(Waiting[i]);
             
             timer = 0f;
             percentage = 0f;
@@ -44,7 +53,7 @@ public class IntroController : MonoBehaviour
             }
         }
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
 
     }
 }

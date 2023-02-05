@@ -21,7 +21,7 @@ public class ChangeScene : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneManager.LoadScene("BreweryScene");
+        SceneManager.LoadScene("intro");
     }
 
     // Update is called once per frame
