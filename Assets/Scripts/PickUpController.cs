@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickUpController : MonoBehaviour
 {
@@ -25,12 +26,10 @@ public class PickUpController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnInteract(InputValue interactValue)
     {
-        if (Input.GetButtonDown("Fire1") && action )
+        if(interactValue.Get<float>() == 1 && action)
         {
-
             Invoke("ActionCooldown", actionCooldown);
             action = false;
 
@@ -45,7 +44,7 @@ public class PickUpController : MonoBehaviour
                 Debug.Log("fire2");
             }
         }
-
+        //Debug.Log(interactValue.Get<float>());
     }
 
     void ActionCooldown()
