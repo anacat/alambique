@@ -6,6 +6,7 @@ public class PickUpController : MonoBehaviour
 {
     public BarrelManager barrel;
     public Transform hands;
+    public Transform ownedBarrel;
     PickUp pickUpInHand;
 
     public int maxGotas;
@@ -73,7 +74,12 @@ public class PickUpController : MonoBehaviour
                     pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
 
                     //pickUpInHand.gameObject.transform.localScale = Vector3.zero;
-                    currentGotas++;
+
+                    currentGotas += pickUpInHand.value;
+                    if (currentGotas > maxGotas)
+                        currentGotas = maxGotas;
+
+                    //currentGotas++;
 
                 }
                 else if (pickUpInHand == null && (tempPickup.type == PickUp.Type.Buff || tempPickup.type == PickUp.Type.Debuff))
@@ -112,7 +118,7 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Barrel"))
+        if (other.transform == ownedBarrel)
         {
             canDropGota = true;
         }
@@ -120,7 +126,7 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Barrel"))
+        if (other.transform == ownedBarrel)
         {
             canDropGota = false;
         }

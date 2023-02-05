@@ -25,6 +25,21 @@ public class MultiplayerController : MonoBehaviour
     
     private PlayerController _p1;
     private PlayerController _p2;
+    //[SerializeField]
+    //private GameObject _p1BarrelBar;
+    //[SerializeField]
+    //private GameObject _p2BarrelBar;
+    [SerializeField]
+    private Animator _p1GageAnimator;
+    [SerializeField]
+    private Animator _p2GageAnimator;
+    [SerializeField]
+    private Transform _p1Barrel;
+    [SerializeField]
+    private Transform _p2Barrel;
+
+    [SerializeField]
+    RootSpawner _rootSpawner;
     
     private PlayerInputManager _inputManager;
 
@@ -45,6 +60,8 @@ public class MultiplayerController : MonoBehaviour
 
             _p1 = playerInput.GetComponent<PlayerController>();
             _p1.uiController = UIManager.instance.player1UI;
+            playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
+            playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
         }
         else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
         {
@@ -53,6 +70,8 @@ public class MultiplayerController : MonoBehaviour
 
             _p2 = playerInput.GetComponent<PlayerController>();
             _p2.uiController = UIManager.instance.player2UI;
+            playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
+            playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
         }
 
         if(_nPlayers == numberOfPlayers)
@@ -93,6 +112,7 @@ public class MultiplayerController : MonoBehaviour
         {
             _p2.CanMove = true;
         }
+        _rootSpawner.StartSpawner();
     }
 
     public PlayerController Player1() => _p1;

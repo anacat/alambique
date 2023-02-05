@@ -61,7 +61,6 @@ public class Confushroom : MonoBehaviour
             yield return new WaitForEndOfFrame();
             transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, _throwSpeed * Time.deltaTime);
             var distance = Vector3.Distance(transform.position, _targetTransform.position);
-            Debug.Log(distance);
             if (distance <= 0.1f)
             {
                 DoOnHit();

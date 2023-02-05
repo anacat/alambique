@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1648442194}
   - component: {fileID: 1648442195}
   m_Layer: 0
-  m_Name: Gota
+  m_Name: Gota 2
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   hitFloor:
     m_PersistentCalls:
       m_Calls: []
-  value: 1
+  value: 3
 --- !u!65 &1648442194
 BoxCollider:
   m_ObjectHideFlags: 0

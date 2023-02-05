@@ -32,6 +32,8 @@ public class PickUp : MonoBehaviour
     public UnityEvent destroyed;
     public UnityEvent hitFloor;
 
+    public int value;
+
     // Start is called before the first frame update
     void Start()
     {

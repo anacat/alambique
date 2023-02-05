@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  speed: 10
-  currentSpeed: 10
+  speed: 5
+  currentSpeed: 5
   rotationSpeed: 10
   shoveStrength: 5
   currentShoveStrength: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 8476796335833400868}
   hands: {fileID: 4414892192975628396}
+  ownedBarrel: {fileID: 0}
   maxGotas: 5
   currentGotas: 0
   actionCooldown: 0.5
@@ -186,9 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capGotas: 10
   currentGotas: 0
-  barrelBar: {fileID: 0}
   zeroScale: {x: 0.6, y: 0, z: 0.6}
   maxScale: {x: 0.6, y: 0.9, z: 0.6}
+  gageAnimator: {fileID: 0}
+  beers: 0
 --- !u!136 &2462344669352012351
 CapsuleCollider:
   m_ObjectHideFlags: 0

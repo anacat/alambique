@@ -77,7 +77,6 @@ public class RoottenBeer : MonoBehaviour
             yield return new WaitForEndOfFrame();
             transform.position += direction.normalized * Time.deltaTime * _throwSpeed;
             var distance = Vector3.Distance(transform.position, _targetTransform.position);
-            Debug.Log(distance);
             if (distance <= 0.1f)
             {
                 DoOnHit();
