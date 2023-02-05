@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lockOnAngle: 60
-  _lockOnDistance: 5
+  _lockOnDistance: 100
   _throwSpeed: 20
 --- !u!82 &-8848998180936392216
 AudioSource:

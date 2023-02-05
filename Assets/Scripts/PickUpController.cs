@@ -25,7 +25,7 @@ public class PickUpController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _player = GetComponent<PlayerController>();
     }
 
     private void OnInteract(InputValue interactValue)
