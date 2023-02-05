@@ -14,7 +14,9 @@ public class UIController : MonoBehaviour
     public Image roottenBeerImage;
     public Image strongAleImage;
     public Image confushroomImage;
-    
+
+    public BeerCounter counterbeer;
+
     public enum ItemType
     {
         doubleTap,
@@ -54,6 +56,8 @@ public class UIController : MonoBehaviour
 
     public void SetServedBeersCounter(int counter)
     {
+        counterbeer.sliderValue = counter;
+
         servedBeersText.text = $"{counter}/10";
     }
 
