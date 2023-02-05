@@ -46,6 +46,10 @@ public class MultiplayerController : MonoBehaviour
     [SerializeField]
     private BeerCounter counter2;
 
+    public AudioClip audio;
+    public AudioClip finalAudio;
+    public AudioSource audioSource;       
+
 
     [SerializeField]
     RootSpawner _rootSpawner;
@@ -113,6 +117,8 @@ public class MultiplayerController : MonoBehaviour
         multiplayerGroup.gameObject.SetActive(false);
         countdownText.gameObject.SetActive(true);
 
+        audioSource.PlayOneShot(audio);
+
         for (int i = 3; i > 0; i--)
         {
             countdownText.text = i.ToString();
@@ -127,6 +133,8 @@ public class MultiplayerController : MonoBehaviour
         {
             _p2.CanMove = true;
         }
+
+        //audioSource.PlayOneShot(finalAudio);
 
         UIManager.instance.EnableUI();
 
