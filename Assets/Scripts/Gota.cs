@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PickUp))]
 
 public class Gota : MonoBehaviour
 {
     PickUp pickUp;
+    public UnityEvent pouredInBarrel;
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class Gota : MonoBehaviour
                 playerController.moleAnimator.SetTrigger("pour");
             }
             pickUp.pickUpController.barrel.AddGotas(pickUp.pickUpController.currentGotas);
-
+            pouredInBarrel.Invoke();
             pickUp.DestroyThiShit(false);
 
             pickUp.pickUpController.NullPickUp();
