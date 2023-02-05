@@ -1034,6 +1034,7 @@ MonoBehaviour:
   - {fileID: 7347132074205645825, guid: 4350ee8fa8380074aa93326eb0071c53, type: 3}
   - {fileID: 7347132074205645825, guid: 4aae57b2f32e07f4bb393cac1f25b59c, type: 3}
   - {fileID: 7347132074205645825, guid: 4404b7ee949150a46a0aa50af682d1f4, type: 3}
+  - {fileID: 7347132074205645825, guid: e34f14b9413971e4dbf4ffc7e47c1ebe, type: 3}
   inUse: 0
 --- !u!1 &813980958
 GameObject:
@@ -2415,10 +2416,19 @@ MonoBehaviour:
   _spawnPoints:
   - {fileID: 7630653764928457546}
   - {fileID: 7630653765954170936}
-  - {fileID: 7630653764803279315}
   - {fileID: 7630653765347717795}
-  - {fileID: 7630653765718202081}
+  - {fileID: 7630653764803279315}
   - {fileID: 7630653764979515407}
+  - {fileID: 7630653765718202081}
+  - {fileID: 1980794331}
+  - {fileID: 961345329}
+  - {fileID: 1596713326}
+  - {fileID: 492539078}
+  - {fileID: 1848340797}
+  - {fileID: 727059005}
+  - {fileID: 1641311449}
+  - {fileID: 517848011}
+  - {fileID: 201926190}
   _spawnDelay: 1
   _spawnIndicatorPrefab: {fileID: 3913637071698319644, guid: 847b562b47f2b0d48b98bf0c11817a24, type: 3}
   _floorLayer:
@@ -2522,8 +2532,8 @@ MonoBehaviour:
   - {fileID: 7347132074205645825, guid: b9fe0fe3818471f468aca2259b9ad3df, type: 3}
   - {fileID: 7347132074205645825, guid: 4350ee8fa8380074aa93326eb0071c53, type: 3}
   - {fileID: 7347132074205645825, guid: f86970249f421054fa86c5c4e5dcf612, type: 3}
-  - {fileID: 7347132074205645825, guid: eb8b0fa8f968f2642ad08c49548b71da, type: 3}
-  - {fileID: 7347132074205645825, guid: 3efe43d5564f9ab469053a93baaecb36, type: 3}
+  - {fileID: 7347132074205645825, guid: 4404b7ee949150a46a0aa50af682d1f4, type: 3}
+  - {fileID: 7347132074205645825, guid: e34f14b9413971e4dbf4ffc7e47c1ebe, type: 3}
   inUse: 0
 --- !u!1 &7630653764979515405
 GameObject:
@@ -2574,6 +2584,7 @@ MonoBehaviour:
   - {fileID: 7347132074205645825, guid: 4350ee8fa8380074aa93326eb0071c53, type: 3}
   - {fileID: 7347132074205645825, guid: 4aae57b2f32e07f4bb393cac1f25b59c, type: 3}
   - {fileID: 7347132074205645825, guid: 4404b7ee949150a46a0aa50af682d1f4, type: 3}
+  - {fileID: 7347132074205645825, guid: e34f14b9413971e4dbf4ffc7e47c1ebe, type: 3}
   inUse: 0
 --- !u!1 &7630653765347717793
 GameObject:

@@ -66,6 +66,7 @@ public class RootSpawner : MonoBehaviour
                 {
                     var spawnIndicator = Instantiate(spawnIndicatorToSpawn, hit.point, _spawnIndicatorPrefab.transform.rotation);
                     pickupComponent.hitFloor.AddListener(() => Destroy(spawnIndicator));
+                    StartCoroutine(DelayedDestroy(spawnIndicator));
                 }
 
                 yield return new WaitForSeconds(_spawnDelay);
@@ -75,6 +76,12 @@ public class RootSpawner : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+    }
+
+    private IEnumerator DelayedDestroy(GameObject obj)
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(obj);
     }
 
 }

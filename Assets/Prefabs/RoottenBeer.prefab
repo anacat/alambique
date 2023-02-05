@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockOnAngle: 60
   _lockOnDistance: 5
-  _throwSpeed: 50
+  _throwSpeed: 20
 --- !u!82 &-2165906841205186797
 AudioSource:
   m_ObjectHideFlags: 0

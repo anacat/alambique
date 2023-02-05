@@ -77,11 +77,14 @@ public class RoottenBeer : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             transform.position += direction.normalized * Time.deltaTime * _throwSpeed;
-            var distance = Vector3.Distance(transform.position, _targetTransform.position);
-            if (distance <= 0.1f)
+            var hits = Physics.OverlapSphere(transform.position, 0.3f);
+            for (var i = 0; i < hits.Length; i++)
             {
-                DoOnHit();
-                yield break;
+                if (hits[i].transform == _targetTransform)
+                {
+                    DoOnHit();
+                    yield break;
+                }
             }
         }
     }
