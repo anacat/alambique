@@ -27,6 +27,7 @@ public class PickUp : MonoBehaviour
     public float fallSpeed;
     bool falling;
 
+    public UnityEvent fall;
     public UnityEvent grabbed;
     public UnityEvent used;
     public UnityEvent destroyed;
@@ -39,6 +40,7 @@ public class PickUp : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         //rb.isKinematic = true;
+
 
         StartCoroutine(LerpScale());
     }
@@ -112,6 +114,7 @@ public class PickUp : MonoBehaviour
         transform.localScale = endScale;
 
         falling = true;
+        fall.Invoke();
     }
 
     private IEnumerator StartDying()
