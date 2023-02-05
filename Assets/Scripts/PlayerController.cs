@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
     public Animator moleAnimator;
+    public Color color;
 
     private void Awake() 
     {
