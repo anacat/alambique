@@ -64,11 +64,11 @@ public class MultiplayerController : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
-        _nPlayers += 1;
+        _nPlayers += 2;
 
-        if(_nPlayers == 1)
-        {
-            p1Text.text = "Player 1 ready!";
+        // if(_nPlayers == 1)
+        // {
+        p1Text.text = "Player 1 ready!";
             playerInput.transform.position = p1Spawn.position;
 
             _p1 = playerInput.GetComponent<PlayerController>();
@@ -78,9 +78,9 @@ public class MultiplayerController : MonoBehaviour
 
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
-        }
-        else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
-        {
+            // }
+            // else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
+            // {
             p2Text.text = "Player 2 ready!";
             playerInput.transform.position = p2Spawn.position;
 
@@ -91,15 +91,15 @@ public class MultiplayerController : MonoBehaviour
 
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
-        }
+            // }
 
-        if(_nPlayers == numberOfPlayers)
-        {
+            // if(_nPlayers == numberOfPlayers)
+            // {
             _inputManager.DisableJoining();
 
             StartCoroutine(StartGameCountDown());
-        }
-    } 
+        // }
+    }
 
     private void OnPlayerLeft(PlayerInput playerInput)
     {
