@@ -9790,7 +9790,7 @@ Transform:
   m_Children:
   - {fileID: 174234826}
   m_Father: {fileID: 8476796333982174498}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &653806247
 ParticleSystem:
@@ -9807,7 +9807,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -19508,7 +19508,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -24313,7 +24313,7 @@ Transform:
   m_Children:
   - {fileID: 2003826091}
   m_Father: {fileID: 8476796333982174498}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1666103032
 ParticleSystem:
@@ -24330,7 +24330,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -29135,7 +29135,7 @@ Transform:
   m_Children:
   - {fileID: 360109146}
   m_Father: {fileID: 8476796333982174498}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1727667015
 ParticleSystem:
@@ -29152,7 +29152,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -38968,11 +38968,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2192185546632787898}
-  - {fileID: 1666103030}
-  - {fileID: 653806245}
-  - {fileID: 1361226943}
-  - {fileID: 964358968654716038}
   - {fileID: 1727667013}
+  - {fileID: 1666103030}
+  - {fileID: 1361226943}
+  - {fileID: 653806245}
+  - {fileID: 964358968654716038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39120,6 +39120,10 @@ MonoBehaviour:
   _strengthUpAmount: 0.5
   _strengthUpDuration: 6
   _confusionDuration: 3
+  speedParticles: {fileID: 1727667015}
+  slowParticles: {fileID: 1666103032}
+  swirlParticles: {fileID: 1361226945}
+  strengthParticles: {fileID: 653806247}
   OnStartSlow:
     m_PersistentCalls:
       m_Calls:
@@ -39168,9 +39172,9 @@ MonoBehaviour:
   OnEndSpeedUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1727667012}
+      - m_Target: {fileID: 1727667015}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: 
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39297,7 +39301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5180358052200462269, guid: 421fb7181539bb7458369909c6508fd3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 421fb7181539bb7458369909c6508fd3, type: 3}

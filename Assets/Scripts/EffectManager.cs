@@ -45,6 +45,9 @@ public class EffectManager : MonoBehaviour
     private bool _isConfused;
     #endregion
 
+    [SerializeField]
+    private ParticleSystem speedParticles, slowParticles, swirlParticles, strengthParticles;
+
     #region Events
     public UnityEvent OnStartSlow;
     public UnityEvent OnEndSlow;
@@ -55,6 +58,22 @@ public class EffectManager : MonoBehaviour
     public UnityEvent OnStartConfusion;
     public UnityEvent OnEndConfusion;
     #endregion
+
+    private void Start()
+    {
+        ParticleSystem.MainModule mainSpeed = speedParticles.main;
+        mainSpeed.duration = _speedUpDuration;
+
+        ParticleSystem.MainModule mainSlow = slowParticles.main;
+        mainSlow.duration = _slowDuration;
+
+        ParticleSystem.MainModule mainSwirl = swirlParticles.main;
+        mainSwirl.duration = _confusionDuration;
+
+        ParticleSystem.MainModule mainStrength = strengthParticles.main;
+        mainStrength.duration = _speedUpDuration;
+
+    }
 
     private void Update()
     {
