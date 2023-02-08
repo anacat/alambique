@@ -39064,7 +39064,7 @@ MonoBehaviour:
   barrel: {fileID: 8476796335833400868}
   hands: {fileID: 4414892192975628396}
   ownedBarrel: {fileID: 0}
-  maxGotas: 5
+  maxGotas: 3
   currentGotas: 0
   actionCooldown: 0.5
   canDropGota: 0
