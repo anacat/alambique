@@ -15,6 +15,10 @@ public class UIController : MonoBehaviour
     public Image strongAleImage;
     public Image confushroomImage;
 
+    [Header("Groups")]
+    public GameObject sapCounterGroup;
+    public GameObject itemGroup;
+
     public BeerCounter counterbeer;
 
     public enum ItemType
@@ -25,15 +29,10 @@ public class UIController : MonoBehaviour
         confushroom
     }
 
-    private void Awake()
-    {
-        SetServedBeersCounter(0);
-        SetSapCounter(0);
-    }
-
     public void SetItem(ItemType itemType)
     {
-        doubleTapRootImage.transform.parent.gameObject.SetActive(true);
+        itemGroup.SetActive(true);
+        sapCounterGroup.SetActive(false);
 
         int item = (int)itemType;
 
@@ -43,10 +42,16 @@ public class UIController : MonoBehaviour
         confushroomImage.gameObject.SetActive(item == 3);
     }
 
-    public void SetSapCounter(int counter)
+    public void SetSapCounter(int counter, int maxCount)
     {
+        if(itemGroup.activeSelf)
+        {
+            itemGroup.SetActive(false);
+            sapCounterGroup.SetActive(true);
+        }
+
         sapCounterText.transform.parent.gameObject.SetActive(true);
-        sapCounterText.text = $"{counter}/3";
+        sapCounterText.text = $"{counter}/{maxCount}";
     }
 
     public void SetProgress(float progress)
@@ -54,17 +59,18 @@ public class UIController : MonoBehaviour
         progressBarImage.fillAmount = progress;
     }
 
-    public void SetServedBeersCounter(int counter)
+    public void SetServedBeersCounter(int counter, int maxCount)
     {
         counterbeer.sliderValue = counter;
+        servedBeersText.text = $"{counter}/{maxCount}";
 
-        servedBeersText.text = $"{counter}/10";
+        counterbeer.SetBeers(counter);
     }
 
     public void HideSapCount()
     {
         sapCounterText.text = "0";
-        sapCounterText.transform.parent.gameObject.SetActive(false);
+        sapCounterGroup.SetActive(false);
     }
 
 

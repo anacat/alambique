@@ -8,12 +8,22 @@ public class BeerCounter : MonoBehaviour
     [Range(-1, 10)]
     public float sliderValue;
 
-    void OnValidate()
+    /*void OnValidate()
     {
         int index = Mathf.RoundToInt(sliderValue * (beers.Length)/10);
         for (int i = 0; i < beers.Length; i++)
         {
             beers[i].SetActive(i <= index);
         }
+    }*/
+
+    public void SetBeers(int value)
+    {
+        if(value > 10 || value <= 0)
+        {
+            return;
+        }
+
+        beers[value - 1].SetActive(true);
     }
 }

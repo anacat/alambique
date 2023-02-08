@@ -19,18 +19,20 @@ public class PickUpController : MonoBehaviour
 
     private PlayerController _player;
 
-    [HideInInspector]
+   /// [HideInInspector]
     public bool canDropGota = false;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = GetComponent<PlayerController>();
+
+        _player.uiController.SetSapCounter(0, maxGotas);
     }
 
     private void OnInteract(InputValue interactValue)
     {
-        if(interactValue.Get<float>() == 1 && action)
+        if(_player.CanMove && interactValue.Get<float>() == 1 && action)
         {
             Invoke("ActionCooldown", actionCooldown);
             action = false;
@@ -38,7 +40,7 @@ public class PickUpController : MonoBehaviour
             if (pickUpInHand == null)
             {
                 TryPickUp();
-                Debug.Log("fire1");
+                Debug.Log("fire1", gameObject);
             }
             else
             {
@@ -46,7 +48,6 @@ public class PickUpController : MonoBehaviour
                 Debug.Log("fire2");
             }
         }
-        //Debug.Log(interactValue.Get<float>());
     }
 
     void ActionCooldown()
@@ -77,10 +78,13 @@ public class PickUpController : MonoBehaviour
                     //pickUpInHand.gameObject.transform.localScale = Vector3.zero;
 
                     currentGotas += pickUpInHand.value;
-                    if (currentGotas > maxGotas)
-                        currentGotas = maxGotas;
 
-                    _player.uiController.SetSapCounter(currentGotas);
+                    if (currentGotas > maxGotas)
+                    {
+                        currentGotas = maxGotas;
+                    }
+
+                    _player.uiController.SetSapCounter(currentGotas, maxGotas);
 
                     //currentGotas++;
 
@@ -138,7 +142,7 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform == ownedBarrel)
+        if (other.CompareTag("Barrel") && other.transform == ownedBarrel)
         {
             canDropGota = true;
         }
@@ -146,7 +150,7 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform == ownedBarrel)
+        if (other.CompareTag("Barrel") && other.transform == ownedBarrel)
         {
             canDropGota = false;
         }
