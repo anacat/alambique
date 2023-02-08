@@ -21,6 +21,8 @@ public class BarrelManager : MonoBehaviour
     {
         _playerController = GetComponent<PlayerController>();
         _playerController.uiController.SetProgress(0);
+
+        _playerController.uiController.SetServedBeersCounter(0,capGotas);
     }
 
     public void AddGotas(int toAdd)
@@ -34,6 +36,7 @@ public class BarrelManager : MonoBehaviour
 
         float scaleModifier = (float)currentGotas / (float)capGotas;
         _playerController.uiController.SetProgress(scaleModifier);
+        _playerController.uiController.HideSapCount();
 
         if(currentGotas >= 10)
         {
@@ -58,6 +61,6 @@ public class BarrelManager : MonoBehaviour
     {
         beers++;
         _playerController.uiController.SetProgress(currentGotas / capGotas);
-        _playerController.uiController.SetServedBeersCounter(beers);
+        _playerController.uiController.SetServedBeersCounter(beers,capGotas);
     }
 }

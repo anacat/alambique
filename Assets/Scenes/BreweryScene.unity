@@ -227,10 +227,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1426811867779406729, guid: 5066e468b6a944101a12f24fd87b3965, type: 3}
+      propertyPath: counterbeer
+      value: 
+      objectReference: {fileID: 1082445348}
     - target: {fileID: 1426811867779406735, guid: 5066e468b6a944101a12f24fd87b3965, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3181306127745405073, guid: 5066e468b6a944101a12f24fd87b3965, type: 3}
+      propertyPath: counterbeer
+      value: 
+      objectReference: {fileID: 86231746}
     - target: {fileID: 3181306127745405079, guid: 5066e468b6a944101a12f24fd87b3965, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1575,8 +1583,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 4.108222, z: 0.9999998}
+  m_Center: {x: 0, y: 1.5541105, z: 0}
 --- !u!23 &925879333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1733,8 +1741,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 4.638659, z: 0.9999998}
+  m_Center: {x: 0, y: 1.8193295, z: 0}
 --- !u!23 &1121176552
 MeshRenderer:
   m_ObjectHideFlags: 0

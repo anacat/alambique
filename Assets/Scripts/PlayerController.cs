@@ -66,12 +66,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        _mpb.SetColor("_MaskedColor", color);
-        meshRenderer.SetPropertyBlock(_mpb);
-    }
-
     void FixedUpdate()
     {
         if(!CanMove)

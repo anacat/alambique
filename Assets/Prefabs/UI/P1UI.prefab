@@ -574,6 +574,9 @@ MonoBehaviour:
   roottenBeerImage: {fileID: 4605855054378676751}
   strongAleImage: {fileID: 4605855054100810782}
   confushroomImage: {fileID: 4605855053121017585}
+  sapCounterGroup: {fileID: 4605855052937648139}
+  itemGroup: {fileID: 4605855053773860753}
+  counterbeer: {fileID: 0}
 --- !u!1 &4605855053773860753
 GameObject:
   m_ObjectHideFlags: 0
