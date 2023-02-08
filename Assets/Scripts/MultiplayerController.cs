@@ -55,6 +55,7 @@ public class MultiplayerController : MonoBehaviour
     RootSpawner _rootSpawner;
 
     private PlayerInputManager _inputManager;
+    private Coroutine _p2Waiting;
 
     private void Awake()
     {
@@ -68,8 +69,14 @@ public class MultiplayerController : MonoBehaviour
 
         if (_nPlayers == 1)
         {
+            if (playerInput.GetDevice<Keyboard>() != null)
+            {
+                playerInput.SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            }
+
             p1Text.text = "Player 1 ready!";
             playerInput.transform.position = p1Spawn.position;
+            playerInput.transform.rotation = Quaternion.identity;
 
             _p1 = playerInput.GetComponent<PlayerController>();
             _p1.uiController = UIManager.instance.player1UI;
@@ -78,6 +85,8 @@ public class MultiplayerController : MonoBehaviour
 
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
+
+            _p2Waiting = StartCoroutine(WaitForP2Keyboard());
         }
         else if (_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
         {
@@ -89,6 +98,8 @@ public class MultiplayerController : MonoBehaviour
             _p2.SetColor(p2Color);
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
+
+            StopCoroutine(_p2Waiting);
         }
 
         if (_nPlayers == numberOfPlayers)
@@ -97,6 +108,31 @@ public class MultiplayerController : MonoBehaviour
 
             StartCoroutine(StartGameCountDown());
         }
+    }
+
+    private IEnumerator WaitForP2Keyboard()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitUntil(() => Input.anyKeyDown);
+
+        _nPlayers = 2;
+        p2Text.text = "Player 2 ready!";
+
+        _p2 = Instantiate(_inputManager.playerPrefab).GetComponent<PlayerController>();
+        _p2.transform.rotation = Quaternion.identity;
+        _p2.transform.position = p2Spawn.position;
+
+        _p2.uiController = UIManager.instance.player2UI;
+        _p2.uiController.counterbeer = counter2;
+        _p2.SetColor(p2Color);
+        _p2.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
+        _p2.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
+
+        _p2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardArrows", Keyboard.current);
+
+        _inputManager.DisableJoining();
+
+        StartCoroutine(StartGameCountDown());
     }
 
     private void OnPlayerLeft(PlayerInput playerInput)

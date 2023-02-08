@@ -2586,6 +2586,10 @@ PrefabInstance:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 8476796333982174499, guid: 201118c87461a174186510a6b4842947, type: 3}
+    - target: {fileID: 4513174165476832547, guid: 32ca3489466977a2c9e82f265a423172, type: 3}
+      propertyPath: m_JoinAction.m_Reference
+      value: 
+      objectReference: {fileID: -1829991608532554620, guid: dd519f82c53c53d1fabceb4868e550c3, type: 3}
     - target: {fileID: 5060195144847119057, guid: 32ca3489466977a2c9e82f265a423172, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
