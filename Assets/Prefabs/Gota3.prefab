@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7347132074205645825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7347132074606448911}
@@ -52,9 +52,10 @@ MonoBehaviour:
   type: 0
   growthDuration: 1
   startScale: {x: 0, y: 0, z: 0}
-  endScale: {x: 1, y: 1, z: 1}
+  endScale: {x: 2, y: 2, z: 2}
   lifeTime: 5
   spawnIndicator: {fileID: 5317275702924228996, guid: e903f260265c55440a1033bbda567206, type: 3}
+  IsPicked: 0
   pickUpController: {fileID: 0}
   floorHeight: 0
   fallSpeed: 5
@@ -338,6 +339,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3638065557214247772, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638065557214247772, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638065557214247772, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638065557214247772, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3638065557214247772, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}

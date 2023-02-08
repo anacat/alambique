@@ -97,7 +97,7 @@ public class PickUp : MonoBehaviour
             hitFloor.Invoke();
             if (type == Type.Gota)
             {
-                //colocar aqui animação
+                //colocar aqui animaï¿½ï¿½o
 
                // DestroyThiShit();
             }
@@ -136,7 +136,6 @@ public class PickUp : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log(transform.parent);
         if(transform.parent == null)
             DestroyThiShit(true);
     }
