@@ -30,6 +30,11 @@ public class PickUpController : MonoBehaviour
         _player.uiController.SetSapCounter(0, maxGotas);
     }
 
+    private void Update()
+    {
+        // Debug.Log(pickUpInHand);
+    }
+
     private void OnInteract(InputValue interactValue)
     {
         if(_player.CanMove && interactValue.Get<float>() == 1 && action)
@@ -37,15 +42,15 @@ public class PickUpController : MonoBehaviour
             Invoke("ActionCooldown", actionCooldown);
             action = false;
 
-            if (pickUpInHand == null)
+            // Debug.Log(pickUpInHand);
+
+            if (pickUpInHand == null || ( pickUpInHand.type == PickUp.Type.Gota && !canDropGota))
             {
                 TryPickUp();
-                Debug.Log("fire1", gameObject);
             }
             else
             {
                 pickUpInHand.Use();
-                Debug.Log("fire2");
             }
         }
     }
@@ -74,6 +79,8 @@ public class PickUpController : MonoBehaviour
                     pickUpInHand.gameObject.transform.SetParent(hands);
                     pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
                     pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
+
+                    pickUpInHand.IsPicked = true;
 
                     //pickUpInHand.gameObject.transform.localScale = Vector3.zero;
 

@@ -19,6 +19,7 @@ public class Gota : MonoBehaviour
     {
         if (pickUp.pickUpController.canDropGota)
         {
+
             var playerController = pickUp.pickUpController.GetComponent<PlayerController>();
             if (playerController != null)
             {

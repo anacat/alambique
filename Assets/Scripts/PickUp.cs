@@ -23,6 +23,10 @@ public class PickUp : MonoBehaviour
     public GameObject spawnIndicator;
 
     [HideInInspector]
+    public Coroutine DyingRoutine;
+    public bool IsPicked = false;
+
+    [HideInInspector]
     public PickUpController pickUpController;
     //Rigidbody rb;
 
@@ -44,7 +48,6 @@ public class PickUp : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
         //rb.isKinematic = true;
 
-
         StartCoroutine(LerpScale());
     }
 
@@ -56,9 +59,11 @@ public class PickUp : MonoBehaviour
                 transform.position.y - fallSpeed * Time.deltaTime,
                 transform.position.z);
 
-            if (transform.position.y <= floorHeight)
+            if (transform.position.y < floorHeight)
             {
                 falling = false;
+
+                StartCoroutine(StartDying());
 
                 transform.position = new Vector3(transform.position.x,
                 floorHeight,
@@ -86,7 +91,8 @@ public class PickUp : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Floor")
+        Debug.Log("Collision!");
+        if (collision.gameObject.tag == "Floor")
         {
             hitFloor.Invoke();
             if (type == Type.Gota)
@@ -130,9 +136,9 @@ public class PickUp : MonoBehaviour
             yield return null;
         }
 
-
+        Debug.Log(transform.parent);
         if(transform.parent == null)
-        DestroyThiShit(true);
+            DestroyThiShit(true);
     }
 
     public void DestroyThiShit(bool invoke)

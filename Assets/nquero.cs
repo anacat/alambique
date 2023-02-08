@@ -8,6 +8,7 @@ public class nquero : MonoBehaviour
 
     public void Kill()
     {
-        pickUp.DestroyThiShit(true);
+        if(!pickUp.IsPicked)
+            pickUp.DestroyThiShit(true);
     }
 }

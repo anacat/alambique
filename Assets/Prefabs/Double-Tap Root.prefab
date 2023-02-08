@@ -55,6 +55,7 @@ MonoBehaviour:
   endScale: {x: 1, y: 1, z: 1}
   lifeTime: 5
   spawnIndicator: {fileID: 7127398994268188936, guid: e9508daee67e1df4db141c0eb854f9af, type: 3}
+  IsPicked: 0
   pickUpController: {fileID: 0}
   floorHeight: 0
   fallSpeed: 5
