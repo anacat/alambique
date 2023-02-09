@@ -54,7 +54,6 @@ public class BarrelManager : MonoBehaviour
         {
             gageAnimator.SetTrigger("Fill1");
         }
-
     }
 
     void ScoreBeer()

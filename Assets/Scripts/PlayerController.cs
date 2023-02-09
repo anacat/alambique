@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Renderer meshRenderer;
 
     private MaterialPropertyBlock _mpb;
+    private bool _goingBack;
 
     private void Awake() 
     {
@@ -63,6 +65,14 @@ public class PlayerController : MonoBehaviour
         if(shoveValue.isPressed && canShove)
         {
             StartCoroutine(DoShoveExecution());
+        }
+    }
+
+    private void OnBack()
+    {
+        if(!_goingBack)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

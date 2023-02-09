@@ -8,7 +8,7 @@ using TMPro;
 public class MultiplayerController : MonoBehaviour
 {
     public static MultiplayerController instance;
-    
+
     public int numberOfPlayers;
     public GameObject multiplayerGroup;
     public TextMeshProUGUI countdownText;
@@ -25,7 +25,7 @@ public class MultiplayerController : MonoBehaviour
 
     private int _nPlayers;
     private bool _gameStarted;
-    
+
     private PlayerController _p1;
     private PlayerController _p2;
     //[SerializeField]
@@ -48,13 +48,14 @@ public class MultiplayerController : MonoBehaviour
 
     public AudioClip audio;
     public AudioClip finalAudio;
-    public AudioSource audioSource;       
+    public AudioSource audioSource;
 
 
     [SerializeField]
     RootSpawner _rootSpawner;
-    
+
     private PlayerInputManager _inputManager;
+    private Coroutine _p2Waiting;
 
     private void Awake()
     {
@@ -64,12 +65,18 @@ public class MultiplayerController : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
-        _nPlayers += 2;
+        _nPlayers++;
 
-        // if(_nPlayers == 1)
-        // {
-        p1Text.text = "Player 1 ready!";
+        if (_nPlayers == 1)
+        {
+            if (playerInput.GetDevice<Keyboard>() != null)
+            {
+                playerInput.SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            }
+
+            p1Text.text = "Player 1 ready!";
             playerInput.transform.position = p1Spawn.position;
+            playerInput.transform.rotation = Quaternion.identity;
 
             _p1 = playerInput.GetComponent<PlayerController>();
             _p1.uiController = UIManager.instance.player1UI;
@@ -78,27 +85,54 @@ public class MultiplayerController : MonoBehaviour
 
             playerInput.GetComponent<BarrelManager>().gageAnimator = _p1GageAnimator;
             playerInput.GetComponent<PickUpController>().ownedBarrel = _p1Barrel;
-        // }
-        // else if(_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
-        // {
-        // p2Text.text = "Player 2 ready!";
-        // playerInput.transform.position = p2Spawn.position;
 
-        // _p2 = playerInput.GetComponent<PlayerController>();
-        // _p2.uiController = UIManager.instance.player2UI;
-        // _p2.uiController.counterbeer = counter2;
-        // _p2.SetColor(p2Color);
+            _p2Waiting = StartCoroutine(WaitForP2Keyboard());
+        }
+        else if (_nPlayers == 2 && _p1 != playerInput.GetComponent<PlayerController>())
+        {
+            p2Text.text = "Player 2 ready!";
+            playerInput.transform.position = p2Spawn.position;
+            _p2 = playerInput.GetComponent<PlayerController>();
+            _p2.uiController = UIManager.instance.player2UI;
+            _p2.uiController.counterbeer = counter2;
+            _p2.SetColor(p2Color);
+            playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
+            playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
 
-        // playerInput.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
-        // playerInput.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
-        // }
+            StopCoroutine(_p2Waiting);
+        }
 
-        // if(_nPlayers == numberOfPlayers)
-        // {
-        _inputManager.DisableJoining();
+        if (_nPlayers == numberOfPlayers)
+        {
+            _inputManager.DisableJoining();
 
             StartCoroutine(StartGameCountDown());
-        // }
+        }
+    }
+
+    private IEnumerator WaitForP2Keyboard()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitUntil(() => Input.anyKeyDown);
+
+        _nPlayers = 2;
+        p2Text.text = "Player 2 ready!";
+
+        _p2 = Instantiate(_inputManager.playerPrefab).GetComponent<PlayerController>();
+        _p2.transform.rotation = Quaternion.identity;
+        _p2.transform.position = p2Spawn.position;
+
+        _p2.uiController = UIManager.instance.player2UI;
+        _p2.uiController.counterbeer = counter2;
+        _p2.SetColor(p2Color);
+        _p2.GetComponent<BarrelManager>().gageAnimator = _p2GageAnimator;
+        _p2.GetComponent<PickUpController>().ownedBarrel = _p2Barrel;
+
+        _p2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardArrows", Keyboard.current);
+
+        _inputManager.DisableJoining();
+
+        StartCoroutine(StartGameCountDown());
     }
 
     private void OnPlayerLeft(PlayerInput playerInput)
@@ -129,7 +163,7 @@ public class MultiplayerController : MonoBehaviour
 
         _p1.CanMove = true;
 
-        if(_p2 != null) 
+        if (_p2 != null)
         {
             _p2.CanMove = true;
         }
