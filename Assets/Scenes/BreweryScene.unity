@@ -2776,7 +2776,7 @@ MonoBehaviour:
   - {fileID: 1641311449}
   - {fileID: 517848011}
   - {fileID: 201926190}
-  _spawnDelay: 2
+  _spawnDelay: 1.5
   _spawnIndicatorPrefab: {fileID: 3913637071698319644, guid: 847b562b47f2b0d48b98bf0c11817a24, type: 3}
   _floorLayer:
     serializedVersion: 2
