@@ -77,8 +77,12 @@ public class PickUpController : MonoBehaviour
                     pickUpInHand.Grab();
 
                     pickUpInHand.gameObject.transform.SetParent(hands);
+                    pickUpInHand.gameObject.transform.SetParent(hands);
                     pickUpInHand.gameObject.transform.localPosition = Vector3.zero;
                     pickUpInHand.gameObject.transform.rotation = Quaternion.identity;
+
+                    SkinnedMeshRenderer drop = pickUpInHand.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+                    drop.enabled = false;
 
                     pickUpInHand.IsPicked = true;
 

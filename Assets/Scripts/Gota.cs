@@ -26,7 +26,9 @@ public class Gota : MonoBehaviour
                 playerController.moleAnimator.SetTrigger("pour");
             }
             pickUp.pickUpController.barrel.AddGotas(pickUp.pickUpController.currentGotas);
+            Debug.Log("Do we get here?");
             pouredInBarrel.Invoke();
+            Debug.Log("We get here!");
             pickUp.DestroyThiShit(false);
 
             pickUp.pickUpController.NullPickUp();

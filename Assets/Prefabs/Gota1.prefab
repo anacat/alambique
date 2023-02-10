@@ -169,7 +169,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -399,6 +399,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4122713362555920870, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122713362555920870, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221764417125041317, guid: e566be21c9ffa744e84da1b3081a66e0, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
